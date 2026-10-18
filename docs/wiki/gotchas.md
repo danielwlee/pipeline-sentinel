@@ -11,4 +11,6 @@ One line each: symptom -> cause -> fix. Add on every correction or bug. Prune st
 - A wrong wiki note is worse than a missing one -> review diffs to the wiki, cap page sizes, and lint relative links so stale pointers don't accumulate.
 - `.git` and Ollama log errors can leak into generated notes -> keep logs out of wiki pages.
 - `gh pr create` fails "Head sha can't be blank / No commits between main and <branch>" -> the remote branch was never pushed -> `git push -u origin <branch>` first, then `gh pr create`
+- New-file tool is `create_new_file` (not `create_file`) -> "Tool create_file not found"; use `create_new_file` with `filepath` + `contents`
+- `edit_existing_file` silently reverts a change on first try, succeeds on retry -> flaky revert; re-read the file after editing to confirm it persisted
 

@@ -1,0 +1,13 @@
+diff --git a/models/customers.sql b/models/customers.sql
+index 016a004..e32759e 100644
+--- a/models/customers.sql
++++ b/models/customers.sql
+@@ -6,7 +6,7 @@ with customers as (
+ 
+ orders as (
+ 
+-    select * from {{ ref('stg_orders') }}
++    select * from raw_orders
+ 
+ ),
+ 

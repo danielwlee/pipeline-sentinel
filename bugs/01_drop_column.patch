@@ -1,0 +1,12 @@
+diff --git a/models/staging/stg_customers.sql b/models/staging/stg_customers.sql
+index cad0472..e02c51c 100644
+--- a/models/staging/stg_customers.sql
++++ b/models/staging/stg_customers.sql
+@@ -11,7 +11,6 @@ with source as (
+ renamed as (
+ 
+     select
+-        id as customer_id,
+         first_name,
+         last_name
+ 

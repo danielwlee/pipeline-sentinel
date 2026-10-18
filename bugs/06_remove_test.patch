@@ -1,0 +1,12 @@
+diff --git a/models/schema.yml b/models/schema.yml
+index e6dba09..2e514a0 100644
+--- a/models/schema.yml
++++ b/models/schema.yml
+@@ -35,7 +35,6 @@ models:
+     columns:
+       - name: order_id
+         tests:
+-          - unique
+           - not_null
+         description: This is a unique identifier for an order
+ 
