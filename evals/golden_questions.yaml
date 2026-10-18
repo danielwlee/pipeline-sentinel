@@ -1,0 +1,6 @@
+# M3 golden set: ~30 questions with the model(s) that should be retrieved.
+questions:
+  - q: Which models use customer_id?
+    relevant: [stg_customers, customers, orders]
+  - q: Where are payment amounts converted from cents?
+    relevant: [stg_payments]

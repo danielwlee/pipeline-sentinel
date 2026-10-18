@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.lancedb/
+data/repos/
+data/index/
+*.egg-info/
+.env
+.pytest_cache/
+.ruff_cache/
