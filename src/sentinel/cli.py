@@ -14,7 +14,7 @@ def ingest(
     index_dir: str = typer.Option(None, help="Where to write chunks/lineage (default: data/index)"),
 ):
     """M1: parse manifest + SQL, chunk per model, write chunks and lineage graph."""
-    chunks, lineage = ingest_mod.ingest(
+    chunks, _lineage = ingest_mod.ingest(
         repo,
         index_dir=index_dir,
         profiles_dir=Path(profiles_dir) if profiles_dir else None,
@@ -49,3 +49,4 @@ def review(pr: int = typer.Option(None), post: bool = typer.Option(False, help="
 
 if __name__ == "__main__":
     app()
+

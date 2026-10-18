@@ -46,6 +46,7 @@ class Chunk(BaseModel):
     description: str = ""
     columns: dict[str, str] = Field(default_factory=dict)
     ctes: list[str] = []
+    cte_columns: dict[str, list[str]] = Field(default_factory=dict)
     selects: list[str] = []
     parsed: bool = True
     parsed_error: str | None = None
@@ -62,3 +63,4 @@ class Chunk(BaseModel):
             "downstream: " + ", ".join(self.lineage.downstream) if self.lineage.downstream else "",
         ]
         return "\n".join(line for line in lines if line)
+

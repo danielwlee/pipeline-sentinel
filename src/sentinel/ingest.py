@@ -47,6 +47,7 @@ def build_chunk(model, manifest_data):
         description=model.get("description", ""),
         columns=_column_map(model),
         ctes=structure["ctes"],
+        cte_columns=structure.get("cte_columns", {}),
         selects=structure["selects"],
         parsed=structure["parsed"],
         parsed_error=structure["error"],
@@ -103,3 +104,4 @@ def ingest(repo, index_dir=None, profiles_dir=None):
     (index_dir / "lineage.json").write_text(_dump(lineage))
     _link_manifest(index_dir, manifest_path)
     return chunks, lineage
+
