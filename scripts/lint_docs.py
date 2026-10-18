@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-LIMITS = {"CONTINUE.md": 60, "docs/STATE.md": 40}  # per-file caps (lines)
+LIMITS = {"CONTINUE.md": 60, "docs/STATE.md": 40, "docs/wiki/gotchas.md": 60}  # per-file caps (lines)
 DEFAULT_LIMIT = 150  # every other docs/**/*.md
 STATE_HEADINGS = ["## Current milestone", "## Done", "## Next", "## Open questions"]
 

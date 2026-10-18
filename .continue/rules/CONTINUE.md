@@ -28,3 +28,17 @@ Code is in `src/sentinel/` (config.py, schemas.py, cli.py). Ground truth is in `
 ## Tools
 - Run shell commands only with `run_terminal_command`. Do not invent tool names.
 - Edit existing files with only `edit_existing_file`.
+
+## Failure protocol
+- If a tool call or command fails twice, stop. Do not try a third time.
+- Reply with: what failed, the exact error, and your best guess at the cause. Wait for me.
+- After I confirm a fix, add one line to docs/wiki/gotchas.md in the form: symptom -> cause -> fix
+- Before retrying anything similar, check docs/wiki/gotchas.md.
+
+## File edits
+- Never write or change files with the shell (no heredocs, `cat >`, `sed -i`, `echo >`).
+- Use create_new_file for new files and edit_existing_file for changes, in small targeted edits.
+- Use run_terminal_command only to run things (uv run, pytest, git status).
+- edit_existing_file takes filepath and changes. `changes` is only the modified code, with `# ... existing code ...` for unchanged parts. No old/new strings, no code fences. Read the file first. One call at a time.
+- If edit_existing_file fails twice, stop and ask me. Do not fall back to the shell.
+- Read files with read_file, not cat. Read each file once, only the part you need. Don't chain commands with &&.

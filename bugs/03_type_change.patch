@@ -1,0 +1,13 @@
+diff --git a/models/staging/stg_payments.sql b/models/staging/stg_payments.sql
+index 700cf7f..af5ee53 100644
+--- a/models/staging/stg_payments.sql
++++ b/models/staging/stg_payments.sql
+@@ -16,7 +16,7 @@ renamed as (
+         payment_method,
+ 
+         -- `amount` is currently stored in cents, so we convert it to dollars
+-        amount / 100 as amount
++        cast(amount / 100 as integer) as amount
+ 
+     from source
+ 
