@@ -22,6 +22,9 @@ Code is in `src/sentinel/` (config.py, schemas.py, cli.py). Ground truth is in `
 - `review` is dry-run by default; posting needs `--post` plus approval
 - Local only: never add cloud LLM calls or telemetry
 - Conventional Commits; branches named `<milestone>/<description>`
+- **Always create a new branch before opening a PR** — never commit to `main` directly. Create a fresh `<milestone>/<description>` branch off the latest `main`, commit there, and open the PR from it.
+- Every PR I open must be assigned to the matching GitHub milestone via `gh pr create --milestone`. Map the work to the right milestone from context (scaffold/setup → M0, ingestion → M1, vector RAG → M2, hybrid/rerank/eval → M3, breaking-change detector → M4, agent → M5, GitHub integration/eval/polish → M6, MCP server → its own milestone). Pass the milestone **title** to `--milestone` (verified: `gh` resolves milestones by title, not number; passing the number fails with "not found"), e.g. `--milestone "M0: Sanity check"`; re-list milestones with `gh api "repos/danielwlee/pipeline-sentinel/milestones"` before opening a PR in case new ones were added.
 
 ## Tools
-Run shell commands only with `run_terminal_command`. Do not invent tool names.
+- Run shell commands only with `run_terminal_command`. Do not invent tool names.
+- Edit existing files with only `edit_existing_file`.
