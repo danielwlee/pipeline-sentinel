@@ -1,0 +1,34 @@
+[project]
+name = "pipeline-sentinel"
+version = "0.1.0"
+description = "Local agentic RAG reviewer for dbt/SQL pipeline repos (Ollama only)"
+requires-python = ">=3.11"
+dependencies = [
+  "typer>=0.12",
+  "rich>=13",
+  "pydantic>=2.7",
+  "pyyaml>=6",
+  "ollama>=0.3",
+  "lancedb>=0.13",
+  "sqlglot>=25",
+  "sqlfluff>=3",
+  "langgraph>=0.2",
+  "dbt-core>=1.8",
+  "dbt-duckdb>=1.8",
+]
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+sentinel = "sentinel.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sentinel"]
+
+[tool.ruff]
+line-length = 100

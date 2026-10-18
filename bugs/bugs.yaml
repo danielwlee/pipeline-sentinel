@@ -1,0 +1,43 @@
+# Seeded breaking changes for jaffle_shop_duckdb. Ground truth for M4/M6 evals.
+# Implement each as a patch file bugs/NN_name.patch (git diff against the clean repo).
+bugs:
+  - id: 01_drop_column
+    model: stg_customers
+    category: dropped_column
+    expected_severity: breaking
+    note: remove customer_id from select; downstream customers/orders join on it
+  - id: 02_rename_column
+    model: stg_orders
+    category: renamed_column
+    expected_severity: breaking
+    note: rename status -> order_status without updating downstream
+  - id: 03_type_change
+    model: stg_payments
+    category: type_change
+    expected_severity: risky
+    note: cast amount to integer (precision loss)
+  - id: 04_grain_change
+    model: orders
+    category: grain_change
+    expected_severity: breaking
+    note: join payments without aggregating -> duplicate order rows
+  - id: 05_remove_ref
+    model: customers
+    category: lineage_change
+    expected_severity: risky
+    note: replace ref('orders') with hardcoded schema.table
+  - id: 06_remove_test
+    model: orders
+    category: test_removed
+    expected_severity: minor
+    note: delete unique test on order_id in schema.yml
+  - id: 07_select_star
+    model: stg_customers
+    category: lint
+    expected_severity: minor
+    note: introduce select * (convention violation)
+  - id: 08_benign
+    model: customers
+    category: none
+    expected_severity: info
+    note: negative control, comment-only change; must NOT be flagged
