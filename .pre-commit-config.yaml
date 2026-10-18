@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: lint-kb
+        name: lint knowledge base
+        entry: uv run python scripts/lint_docs.py
+        language: system
+        pass_filenames: false
+        files: ^(CONTINUE\.md|docs/.*\.md)$
